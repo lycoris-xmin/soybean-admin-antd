@@ -1,11 +1,11 @@
 import cac from 'cac';
 import { blue, lightGreen } from 'kolorist';
 import { version } from '../package.json';
-import { cleanup, genChangelog, generateRoute, gitCommit, gitCommitVerify, release, updatePkg } from './commands';
+import { cleanup, genChangelog, generateRoute, release, updatePkg } from './commands';
 import { loadCliOptions } from './config';
 import type { Lang } from './locales';
 
-type Command = 'cleanup' | 'update-pkg' | 'git-commit' | 'git-commit-verify' | 'changelog' | 'release' | 'gen-route';
+type Command = 'cleanup' | 'update-pkg' | 'changelog' | 'release' | 'gen-route';
 
 type CommandAction<A extends object> = (args?: A) => Promise<void> | void;
 
@@ -65,18 +65,6 @@ export async function setupCli() {
       desc: 'update package.json dependencies versions',
       action: async () => {
         await updatePkg(cliOptions.ncuCommandArgs);
-      }
-    },
-    'git-commit': {
-      desc: 'git commit, generate commit message which match Conventional Commits standard',
-      action: async args => {
-        await gitCommit(args?.lang);
-      }
-    },
-    'git-commit-verify': {
-      desc: 'verify git commit message, make sure it match Conventional Commits standard',
-      action: async args => {
-        await gitCommitVerify(args?.lang, cliOptions.gitCommitVerifyIgnores);
       }
     },
     changelog: {
