@@ -54,6 +54,20 @@ declare namespace Api {
    * Backend api module: "auth"
    */
   namespace Auth {
+    interface PasswordOathCodeRequest {
+      account: string;
+      password: string;
+    }
+
+    interface OathCodeResponse {
+      oathCode: string;
+    }
+
+    interface OathCodeLoginRequest {
+      account: string;
+      oathCode: string;
+    }
+
     interface LoginToken {
       token: string;
       refreshToken: string;
