@@ -20,6 +20,8 @@ declare namespace App {
       otherColor: OtherColor;
       /** Whether info color is followed by the primary color */
       isInfoFollowPrimary: boolean;
+      /** Reset cache strategy */
+      resetCacheStrategy: UnionKey.ResetCacheStrategy;
       /** Layout */
       layout: {
         /** Layout mode */
@@ -31,7 +33,7 @@ declare namespace App {
          *
          * if true, the vertical child level menus in left and horizontal first level menus in top
          */
-        reverseHorizontalMix?: boolean;
+        reverseHorizontalMix: boolean;
       };
       /** Page */
       page: {
@@ -96,7 +98,7 @@ declare namespace App {
         right: boolean;
       };
       /** Watermark */
-      watermark?: {
+      watermark: {
         /** Whether to show the watermark */
         visible: boolean;
         /** Watermark text */
@@ -384,6 +386,7 @@ declare namespace App {
         };
         themeDrawerTitle: string;
         pageFunTitle: string;
+        resetCacheStrategy: { title: string } & Record<UnionKey.ResetCacheStrategy, string>;
         configOperation: {
           copyConfig: string;
           copySuccessMsg: string;
